@@ -1,0 +1,8 @@
+# Install from the company root: sed "s|@ROOT@|$PWD|" tools/guard/jl-guard.service > ~/.config/systemd/user/jl-guard.service
+[Unit]
+Description=Jamilabs disk and RAM guard (G-001)
+
+[Service]
+Type=oneshot
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
+ExecStart=/usr/bin/env python3 -I @ROOT@/tools/jl_guard.py --notify
